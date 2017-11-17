@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 
 public class BookStats {
 
+    //Multi-threading
     private static boolean compareBooksByChars(String book1, String book2) {
         final ConcurrentHashMap<Integer, Integer> book1Stats = new ConcurrentHashMap<>();
         final ConcurrentHashMap<Integer, Integer> book2Stats = new ConcurrentHashMap<>();
@@ -16,6 +17,7 @@ public class BookStats {
         return book1Stats.equals(book2Stats);
     }
 
+    //Single thread solution
     private static boolean compareStreamsByChars(Stream<Integer> book1, Stream<Integer> book2){
         return book1.collect(Collectors.groupingBy(Object::hashCode)).equals(book2.collect(Collectors.groupingBy(Object::hashCode)));
     }
